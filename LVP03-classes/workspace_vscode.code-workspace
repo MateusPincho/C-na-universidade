@@ -1,0 +1,23 @@
+{
+	"folders": [
+		{
+			"path": "..\\..\\..\\HTML"
+		},
+		{
+			"path": "..\\..\\..\\GIT"
+		},
+		{
+			"path": "..\\..\\..\\PYTHON"
+		},
+		{
+			"path": "..\\.."
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "HTML",
+		"files.associations": {
+			"iostream": "cpp",
+			"ostream": "cpp"
+		}
+	}
+}
