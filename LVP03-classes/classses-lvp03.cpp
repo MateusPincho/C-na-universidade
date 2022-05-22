@@ -110,7 +110,7 @@ int main() // Programa Principal - Simulador
    
     // Passo 4 - Iniciar análise do circuito 
 
-    cout << "Você acabou de configurar o seu Circuito Simulado!" << endl<< " Vamos agora fazer uma análise minuciosa sobre suas caracteristicas" << endl;
+    cout << "Você acabou de configurar o seu Circuito Simulado!" << endl<< "Vamos agora fazer uma análise minuciosa sobre suas caracteristicas" << endl;
     system("pause");
 
     // Passo 5 - Achar as informações dos resistores
