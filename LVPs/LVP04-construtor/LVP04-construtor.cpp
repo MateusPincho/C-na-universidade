@@ -84,6 +84,9 @@ int main(){
     SistemaInterestelar vialactea( entradaNome1,entradaRaio1,entradaMassa1, entradaNome2, entradaRaio2, entradaMassa2, entradaDistancia);
 
 
+    bool maiorMassaDosPlanetas = vialactea.getMaiorMassa();
+
+    cout << "A velocidade de orbita é " << scientific << setprecision(2) << vialactea.getVelocidadeOrbita(maiorMassaDosPlanetas) << " km/s" << endl;
 
 
 
@@ -124,11 +127,12 @@ double SistemaInterestelar :: getVelocidadeOrbita( bool massaMaior)
 {
     // Se massaMaior == true => Significa que o Planeta 1 tem massa maior
     // Se massaMaior == false => Significa que o Planeta 2 tem massa maior
+    // Divisão por 100 para transformar para Km/s
     
     if (massaMaior)
-        return sqrt(constanteG*(Planeta1.massa/distanciaPlanetas));
+        return sqrt( constanteG * ( Planeta1.massa /  distanciaPlanetas ) ) / 1000 ; 
     else
-        return sqrt(constanteG*(Planeta2.massa/distanciaPlanetas));
+        return sqrt( constanteG * ( Planeta2.massa / distanciaPlanetas ) ) / 1000 ;
 
 
 }
