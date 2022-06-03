@@ -1,0 +1,57 @@
+Escreva o programa abaixo em três arquivos separados. Um com o protótipo da classe (.h), outro com a especificação da classe (.cpp) e o terceiro com a execução do programa (main()).
+
+Crie uma classe para representar um horário.
+
+    >> horario.h
+
+
+1. Represente um horário usando três atributos: hora, minuto e segundo.
+
+    >> horario{
+        float hora
+        float minuto
+        float segundo
+    };
+
+2. Sua classe deve ter um construtor que inicializa os três atributos e verifica a validade
+dos valores fornecidos.
+
+    >> horario(float, float, float)
+
+3. Escreva também um construtor sem parâmetros que inicializa o horário com a hora atual
+fornecida pelo sistema operacional (pesquise a função que recupera essa hora).
+
+    >> horario()
+        - usar o ctime para pegar esse tempo 
+
+4. Escreva um método set e um get para cada atributo.
+
+5. Escreva o método converteString para retornar uma representação do horário como string.
+Considere que a data deve ser formatada mostrando a hora, o minuto e o segundo separados por dois pontos (:).
+
+
+
+
+6. Escreva uma operação para avançar o horário em um segundo
+lembrando de atualizar hora e minuto quando for o caso.
+
+    >> avancarhora(){
+        segundo +=1
+        if segundo > 59
+            segundo = 00
+            minuto +=1
+        if minuto > 59
+            minuto = 00
+            hora += 1
+        
+    }
+
+7. Escreva um aplicativo de teste que demonstra as capacidades da classe
+ou seja, instancie vários objetos do tipo horário (com e sem valores iniciais) 
+execute o método para atualizar o horário várias vezes nesses objetos. 
+
+    fazer isso na main() 
+
+Em seguida, imprima a hora resultante de cada objeto. 
+Garanta que as instâncias desta classe sempre estejam em um estado consistente
+ou seja, não produzam valores indesejados ou não válidos.
