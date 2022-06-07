@@ -1,0 +1,9 @@
+criar uma classe estacionamento 
+    estacionamento.h
+atributos:
+    - propietario
+    - placa veículo 
+    - hora passada (struct)
+    - valor a pagar 
+
+o programa se inicia quando alguém entra no estacionamento 
