@@ -55,17 +55,17 @@ void Estacionamento::setHoraSaida(int hora, int minuto, int segundo)
     this -> HoraSaida.minutos = minuto;
     this -> HoraSaida.segundos = segundo;
 }
-// Função get para a   
+// Função get para a placa do carro 
 string Estacionamento::getPlaca()
 {
     return placaCarro;
 }
-// Função get para 
+// Função get para proprietario
 string Estacionamento::getDono()
 {
     return donoCarro;
 }
-// Função get para 
+// Função get para calcular o tempo total percorrido
 float Estacionamento::getTempoPercorrido()
 {
     int HoraEntradaEmSegundos = (HoraEntrada.hora * 3600 ) + (HoraEntrada.minutos * 60) + (HoraEntrada.segundos);
@@ -75,7 +75,7 @@ float Estacionamento::getTempoPercorrido()
     return TempoPercorridoEmHora;
 
 }
-// Função get para 
+// Função get para o valor total gasto
 float Estacionamento::getValorPago(int tempoPercorrido)
 {
     float custo = precoHora * tempoPercorrido;
@@ -84,5 +84,5 @@ float Estacionamento::getValorPago(int tempoPercorrido)
 // Destrutor com mensagem de encerramento do programa
 Estacionamento::~Estacionamento()
 {
-    cout << "Você pagou o valor do estacionamento! Obrigado e volte sempre" ;
+    cout << "Voce pagou o valor do estacionamento! Obrigado e volte sempre" ;
 }

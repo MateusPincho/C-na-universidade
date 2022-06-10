@@ -18,9 +18,6 @@ struct Horario             // Armazena o horário de entrada e saida
     int segundos;
 };
 
-
-
-
 class Estacionamento
 {
     string placaCarro;

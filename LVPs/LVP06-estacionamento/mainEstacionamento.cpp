@@ -32,14 +32,24 @@ int main(){
     int entradaMinutoSaida;
     int entradaSegundoSaida;
 
-    cout << "Informe seu nome: " << endl;
+    cout << "Informe seu nome sem espacos: " << endl;
     cin >> entradaNome;
-    cout << "Informe a placa de seu veículo: " << endl;
+    cout << "Informe a placa de seu veiculo: " << endl;
     cin >> entradaPlaca;
     cout << "Qual o horario em que estacionou seu veiculo? " << endl;
-    cin >> entradaHoraInicio, entradaMinutoInicio, entradaSegundoInicio;
-    cout << "Qual o horario em que está saindo?" << endl;
-    cin >> entradaHoraSaida, entradaMinutoSaida, entradaSegundoSaida;
+    cout << "Hora: " << endl;
+    cin >> entradaHoraInicio; 
+    cout << "Minuto: "<< endl;
+    cin >> entradaMinutoInicio;
+    cout << "Segundo: "<< endl;
+    cin >> entradaSegundoInicio;
+    cout << "Qual o horario em que esta saindo?" << endl;
+    cout << "Hora: " << endl;
+    cin >> entradaHoraSaida; 
+    cout << "Minuto: "<< endl;
+    cin >> entradaMinutoSaida;
+    cout << "Segundo: "<< endl;
+    cin >> entradaSegundoSaida;
 
     
     // Passo3 - Realizar os metodos sets
@@ -58,7 +68,7 @@ int main(){
     cout << "O Sistema encontrou seu carro!" << endl;
     cout << "Placa: " << estacionamentos.getPlaca() << endl;
     cout << "Nome do proprietario: " << estacionamentos.getDono() << endl;
-    cout << "O Sistema está calculando o valor a ser pago pelo tempo percorrido em nosso estacionamento..." << endl;
+    cout << "O Sistema esta calculando o valor a ser pago pelo tempo percorrido em nosso estacionamento..." << endl;
     system("pause");
     cout << "Horas ocupadas: " << tempoGasto << "h" << endl;
     cout << "Valor a ser pago: " << custoEstacionamento << " Reais" << endl;
