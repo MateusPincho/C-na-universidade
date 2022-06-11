@@ -2,8 +2,8 @@
 #define SETORPESSOAL_H
 
 class SetorPessoal{
-    Funcionario *funcionarios; //nome da lista 
-    unsigned num;  //unsigned = inteiro sem sinal
+    Funcionario *funcionarios; //nome da lista
+    unsigned num;  //numero de funcionarios
 public:
     SetorPessoal(int);
     void addFunc(Funcionario);
@@ -19,7 +19,7 @@ public:
     void imprimePorFuncao(string);
     //Imprime a lista de funcionários por ordem crescente de salário
     void imprimePorSalario();
-    
+
     //Exemplo extra - compara nomes com uma lista fornecida pelo usuário e retona a quantidade de nomes iguais
     //int comparaNomes(string[]);
 

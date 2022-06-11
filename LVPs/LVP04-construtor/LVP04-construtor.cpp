@@ -30,7 +30,7 @@ class SistemaInterestelar {
     CorpoCeleste Planeta1;
     CorpoCeleste Planeta2;
     double distanciaPlanetas;
-    double constanteG;
+    const double constanteG = 6.67e-11;
 
 public:
 
@@ -121,7 +121,7 @@ SistemaInterestelar::SistemaInterestelar (string nome1, double raio1, double mas
     Planeta2.massa = massa2;
 
     distanciaPlanetas = distancia;
-    constanteG = 6.67e-11;
+
 
 }
 
