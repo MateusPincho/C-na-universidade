@@ -1,5 +1,6 @@
 #include "setorPessoal.h"
 
+// Diz qual o tamanho da lista -> n
 SetorPessoal::SetorPessoal(int n){
     funcionarios = new Funcionario[n];
     num = 0;

@@ -7,6 +7,7 @@ class Produto
     int quantidade;
 public:
     Produto(string, int);
+    Produto();
     void setNome(string);
     void setQuantidade(int);
     string getNome();
