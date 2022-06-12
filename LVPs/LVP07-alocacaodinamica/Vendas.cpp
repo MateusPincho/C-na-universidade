@@ -66,5 +66,29 @@ void Vendas::exibirEstoque()
 
 void Vendas::venderProduto(string nomeProduto, int quantiProduto)
 {
-    if ()
+   if(verificaNome(nomeProduto) == false)                               // caso não haja este produto em estoque, avisar!
+       cout << "O produto que voce deseja está em falta, sinto muito!" << endl;
+   else                                                                 // caso haja, realizar a venda
+   {
+       for (int i = 0; i < posicao; i++)                                // percorrer por toda a lista e procurar o que possui o mesmo nome
+       {
+           if(produtosEmEstoque[i].getNome() == nomeProduto)
+           {
+               int quantAtual = produtosEmEstoque[i].getQuantidade();   // Recebe a quantidade atual do produto
+               if (quantiProduto > quantAtual)                          // Verifica se possui a quantidade necessaria para a venda
+               {
+                   cout << "Não possuimos a quantidade que deseja!" << endl;
+                   break;
+               }
+               else                                                        // Caso possua: realizar venda
+               {
+                   int novaQuant = quantAtual - quantiProduto;              // Subtrai da quantidade que irá ser vendida
+                   produtosEmEstoque[i].setQuantidade(novaQuant);           // Armazena a nova quantidade
+                   cout << "Sua venda foi realizada com sucesso!" << endl;
+                   break;
+               }
+
+           }
+       }
+   }
 }

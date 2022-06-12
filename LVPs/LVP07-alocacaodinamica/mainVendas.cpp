@@ -75,12 +75,24 @@ int main()
                 break;
 
             case 3:
-                cout << "Função ainda não adicionada!";
-                break;
+                if (capacidadeEstoqueAtual == 0)
+                {
+                    cout << "Não há produtos no estoque! Lembre de adicionar os novo produtos que chegaram" << endl;
+                    break;
+                }
+                string nomeVenda;
+                int quantidadeVenda;
+                cout << "Qual o produto que deseja comprar?" << endl;
+                cin.ignore();
+                getline(cin, nomeVenda);
+                cout << "Quantas unidades desse produto você deseja?" << endl;
+                cin >> quantidadeVenda;
+                vendedor.venderProduto(nomeVenda,quantidadeVenda);
 
-            case 4:
-                cout << "Função ainda não adicionada!";
-                break;
+
+            //case 4:
+               // cout << "Função ainda não adicionada!";
+               // break;
 
         }
         system("pause");
