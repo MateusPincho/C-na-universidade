@@ -27,6 +27,7 @@ int main()
     string entradaNomeProduto;
     int entradaQuantiProduto;
     float entradaPrecoProduto;
+    string entradaNomePesquisa;
     int opcao;
 
 
@@ -83,6 +84,15 @@ int main()
             case 2:
                 vendedor.exibirEstoque();
                 break;
+
+            case 3:
+                cout << "Função não definida!";
+
+            case 4:
+                cout << "Qual o nome do produto que deseja pesquisar?" << endl;
+                cin.ignore();
+                getline(cin, entradaNomePesquisa);
+                vendedor.pesquisarProduto(entradaNomePesquisa);
         }
         system("pause");
 
