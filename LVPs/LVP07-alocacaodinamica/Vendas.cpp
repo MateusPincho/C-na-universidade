@@ -1,61 +1,42 @@
 #include "Vendas.h"
 
-Vendas::Vendas(int tamanhoLista)
+Vendas::Vendas(int tamanhoLista)                        // construtor que cria a alocação dinamica
 {
     produtosEmEstoque = new Produto[tamanhoLista];
-    posicao = 0;
+    posicao = 0;                                        // Indica quantos produtos já estão dentro da lista
 }
 
-bool Vendas::verificaNome(string nome)
+bool Vendas::verificaNome(string nome)                  // verifica se há um produto com aquele nome -> realizar validações nas outras funções
 {
     bool existencia;
     for (int i = 0; i < posicao; i++)
     {
-        if(produtosEmEstoque[i].getNome() == nome)
+        if(produtosEmEstoque[i].getNome() == nome)      // Percorrer toda a lista em busca do nome
         {
-            existencia = true;
+            existencia = true;                          // Caso encontre, retorna True
             break;
         }
         else
         {
-            existencia = false;
+            existencia = false;                         // Caso não encontre, retorna False
         }
     }
-    if (existencia)
+    if (existencia)                                     // Realizar o retorno da função verificaNome()
         return true;
     else
         return false;
 }
 
-void Vendas::adicionarProduto(Produto produto)
+void Vendas::adicionarProduto(Produto produto)          // Função para adicionar um novo produto
 {
-    /*string nomeProduto = produto.getNome();
-    int quantiProduto = produto.getQuantidade();
-
-    if (verificaNome(nomeProduto) == false)     // caso seja verificado que não há produtos com esse nome, adicionar ele a lista
-    {
-
-    }
-    else        // caso seja verificado que há produto com este mesmo nome, apenas alterar a quantidade, sem adicionar na lista
-    {
-        for (int i = 0; i < posicao; i++)
-        {
-            if (produtosEmEstoque[i].getNome() == nomeProduto)
-            {
-            int quantiAtual = produtosEmEstoque[i].getQuantidade();
-            int novaQuantidade = quantiAtual + quantiProduto;
-            produtosEmEstoque[i].setQuantidade(novaQuantidade);
-            }
-        }
-    }*/
-    produtosEmEstoque[posicao] = produto;
-    posicao++;
+    produtosEmEstoque[posicao] = produto;               // Colocar o novo produto na posição indicada
+    posicao++;                                          // Somar um ao valor da posição para ir para a proxima posição vazia
 
 }
 
-void Vendas::exibirEstoque()
+void Vendas::exibirEstoque()                            // Função para exibir todos os produtos na lista
 {
-    for(int i = 0; i < posicao; i++)
+    for(int i = 0; i < posicao; i++)                    // Percorrer toda a lista e exibir os produtos de cada posição
     {
         cout << "===========================================" << endl;
         cout << "Nome: " << produtosEmEstoque[i].getNome() << endl;
@@ -64,7 +45,7 @@ void Vendas::exibirEstoque()
     cout << "===========================================" << endl;
 }
 
-void Vendas::venderProduto(string nomeProduto, int quantiProduto)
+void Vendas::venderProduto(string nomeProduto, int quantiProduto)        // Função para vender um produto
 {
    if(verificaNome(nomeProduto) == false)                               // caso não haja este produto em estoque, avisar!
        cout << "O produto que voce deseja está em falta, sinto muito!" << endl;
@@ -91,4 +72,30 @@ void Vendas::venderProduto(string nomeProduto, int quantiProduto)
            }
        }
    }
+}
+
+void Vendas::pesquisarProduto(string nomePesquisa)                       // Função para pesquisar um produto na lista
+{
+   if(verificaNome(nomePesquisa) == false)                               // caso não haja este produto na lista, avisar!
+       cout << "O produto que voce deseja não foi encontrado, verifique se digitou o nome corretamente!" << endl;
+   else                                                                 // caso haja, realizar a pesquisa
+   {
+       for (int i = 0; i < posicao; i++)                                // percorrer por toda a lista e procurar o que possui o mesmo nome
+       {
+           if(produtosEmEstoque[i].getNome() == nomePesquisa)            // caso o nome seja igual, exibir
+           {
+               cout << "===========================================" << endl;
+               cout << "Nome: " << produtosEmEstoque[i].getNome() << endl;
+               cout << "Quantidade: " << produtosEmEstoque[i].getQuantidade() << endl;
+
+           }
+       }
+       cout << "===========================================" << endl;
+   }
+}
+
+Vendas::~Vendas()
+{
+    delete []produtosEmEstoque;
+    cout << "Encerrando sessão, obrigado!" << endl;
 }

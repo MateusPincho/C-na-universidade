@@ -11,6 +11,8 @@ public:
     void pesquisarProduto(string);      // Pesquisar um produto dentro do estoque(lista) e exibi-lo com sua quantidade
     void exibirEstoque();       // exibir todos os produtos do estoque (lista)
     bool verificaNome(string);      // verifica a existência de um produto no estoque
+
+    ~Vendas();
 };
 
 #endif // VENDAS_H
