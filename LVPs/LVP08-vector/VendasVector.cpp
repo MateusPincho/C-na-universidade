@@ -9,7 +9,6 @@
 //IDE: CodeBlocks */
 
 #include "VendasVector.h"
-#include "Pedido.h"
 
 Vendas::Vendas(){}
 
@@ -71,4 +70,6 @@ void Vendas::pesquisarProduto(string nomeProduto)
         cout << "===========================================" << endl;
     }
 }
+
+
 

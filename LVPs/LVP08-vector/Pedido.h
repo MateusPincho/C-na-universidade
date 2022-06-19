@@ -23,7 +23,10 @@ class Pedidos
     vector <Pedido> carrinhoDeCompras;
     float valorTotal;
 public:
-    void adicionarAoCarrinho(Pedido);
+
+    void adicionarAoCarrinho(string, int, float);
+    void exibirPedidosNoCarrinho();
+    void removerPedido(int);
     float getValorTotal();
 };
 #endif // PEDIDO_H

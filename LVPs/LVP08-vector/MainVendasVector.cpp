@@ -27,8 +27,17 @@ int main()
     string entradaNomeProduto;
     int entradaQuantiProduto;
     float entradaPrecoProduto;
+
     string entradaNomePesquisa;
+
+    string entradaNomeVenda;
+    int entradaQuantVenda;
+    float entradaPrecoVenda;
+    int numeroRemover;
+
+
     int opcao;
+    int opcaoVendas;
 
 
     Vendas vendedor;
@@ -45,16 +54,18 @@ int main()
         // Perguntar qual a ação a ser realizada
         cout << "1 - Adiconar produto" << endl
              << "2 - Exibir estoque atual de produtos" << endl
-             << "3 - Vender produtos" << endl
-             << "4 - Pesquisar produto" << endl
-             << "5 - Encerrar" << endl;
+             << "3 - Pesquisar produto" << endl
+             << "4 - Adicionar produto ao carrinho" << endl
+             << "5 - Remover produto do carrinho" << endl
+             << "6 - Ir para o caixa" << endl
+             << "7 - Encerrar" << endl;
         cout << "Digite a opção desejada: " << endl;
         cin >> opcao;
 
         system("cls");
 
         // Encerrar o programa caso a opcao seja 5
-        if (opcao == 5)
+        if (opcao == 7)
         {
             cout << "Encerrando sessão, obrigado!" << endl;
             break;
@@ -86,13 +97,38 @@ int main()
                 break;
 
             case 3:
-                cout << "Função não definida!";
-
-            case 4:
                 cout << "Qual o nome do produto que deseja pesquisar?" << endl;
                 cin.ignore();
                 getline(cin, entradaNomePesquisa);
                 vendedor.pesquisarProduto(entradaNomePesquisa);
+
+            case 4:
+                cout << "Temos em estoque os seguintes produtos: " << endl;
+                vendedor.exibirEstoque();
+                cout << endl << "Qual produto você deseja comprar? " << endl;
+                cin.ignore();
+                getline(cin, entradaNomeVenda);
+                cout << "Informe o preço do produto como consta no menu: " << endl;
+                cin >> entradaPrecoVenda;
+                cout << "Qual a quantidade desejada: " << endl;
+                cin >> entradaQuantVenda;
+
+                Pedidos.adicionarAoCarrinho(entradaNomeVenda, entradaQuantVenda, entradaPrecoVenda);
+
+            case 5:
+                cout << "Seu carrinho de compras é: " << endl;
+                Pedidos.exibirPedidosNoCarrinho();
+                cout << endl << "Qual o pedido que você deseja excluir (informe o número anexado ao produto) : " << endl;
+                cin >> numeroRemover;
+                Pedidos.removerPedido(numeroRemover);
+
+            case 6:
+                cout << "Seu carrinho de compras é :" << endl;
+                Pedidos.exibirPedidosNoCarrinho();
+                cout << "O valor total da venda foi de " << Pedidos.getValorTotal() << " Reais" << endl;
+                break;
+
+
         }
         system("pause");
 
