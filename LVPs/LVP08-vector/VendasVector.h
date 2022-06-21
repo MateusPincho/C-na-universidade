@@ -17,10 +17,13 @@ class Vendas
 
 public:
     Vendas();
-    void adicionarProduto(Produto);
-    void exibirEstoque();
-    void pesquisarProduto(string);
-    bool verificarExistencia(string);
+    void adicionarProduto(Produto);             // Adiciona um produto ao estoque
+    void exibirEstoque();                       // Exibe o estoque de todos os produtos
+    void pesquisarProduto(string);              // Pesquisa um determinado produto dentro do estoque, recebe o nome desse produto
+    bool verificarExistencia(string);           // Verifica se há a exitencia de um determinado produto
+    bool verificarQuantidade(string, int);      // Verifica se há quantidade suficiente para realizar a venda
+    void removerQuantidade(string, int);        // Remove a quantidade de um produto depois de sua venda
+    int quantidadeEstoque();                    // Descobrir a quantidade total de produtos dentro do estoque, saber se o estoque não está vazio
 
 
 };

@@ -42,6 +42,8 @@ int main()
 
     Vendas vendedor;
 
+    Pedidos carrinhoCompras;
+
     // Criar interface de interação com o usuário
     while(1)
     {
@@ -64,7 +66,7 @@ int main()
 
         system("cls");
 
-        // Encerrar o programa caso a opcao seja 5
+        // Encerrar o programa caso a opcao seja 7
         if (opcao == 7)
         {
             cout << "Encerrando sessão, obrigado!" << endl;
@@ -75,6 +77,7 @@ int main()
         switch(opcao)
         {
             case 1:
+                // Perguntar os atributos do produto
                 cout << "Qual o nome do produto que deseja adicionar ao estoque? " << endl;
                 cin.ignore();
                 getline(cin,entradaNomeProduto);
@@ -93,42 +96,125 @@ int main()
                 break;
 
             case 2:
-                vendedor.exibirEstoque();
-                break;
+                // Verificar se há produtos no estoque
+                if (vendedor.quantidadeEstoque() == 0)
+                {
+                    cout << "Não temos nenhum produto em estoque, tente adicionar novos produtos!" << endl;
+                    break;
+                }
+                //Apenas exibir o estoque caso ele possua produtos
+                else
+                {
+                    vendedor.exibirEstoque();
+                    break;
+                }
 
             case 3:
-                cout << "Qual o nome do produto que deseja pesquisar?" << endl;
-                cin.ignore();
-                getline(cin, entradaNomePesquisa);
-                vendedor.pesquisarProduto(entradaNomePesquisa);
+                // Verificar se há produtos no estoque
+                if (vendedor.quantidadeEstoque() == 0)
+                {
+                    cout << "Não temos nenhum produto em estoque, tente adicionar novos produtos!" << endl;
+                    break;
+                }
+                // Apenas pesquisar caso haja produtos no estoque
+                else
+                {
+                    cout << "Qual o nome do produto que deseja pesquisar?" << endl;
+                    cin.ignore();
+                    getline(cin, entradaNomePesquisa);
+                    vendedor.pesquisarProduto(entradaNomePesquisa);
+                    break;
+                }
 
             case 4:
-                cout << "Temos em estoque os seguintes produtos: " << endl;
-                vendedor.exibirEstoque();
-                cout << endl << "Qual produto você deseja comprar? " << endl;
-                cin.ignore();
-                getline(cin, entradaNomeVenda);
-                cout << "Informe o preço do produto como consta no menu: " << endl;
-                cin >> entradaPrecoVenda;
-                cout << "Qual a quantidade desejada: " << endl;
-                cin >> entradaQuantVenda;
+                // Verificar se há produtos no estoque
+                if (vendedor.quantidadeEstoque() == 0)
+                {
+                    cout << "Não temos nenhum produto em estoque, tente adicionar novos produtos!" << endl;
+                    break;
+                }
+                // Apenas adicionar ao carrinho caso haja produtos no estoque
+                else
+                {
+                    // Listar todos os produtos do estoque
+                    cout << "Temos em estoque os seguintes produtos: " << endl;
+                    vendedor.exibirEstoque();
+                    cout << endl << "Qual produto você deseja comprar? " << endl;
+                    cin.ignore();
+                    getline(cin, entradaNomeVenda);
+                    // Verificar se o produto digitado existe no estoque
+                    if(vendedor.verificarExistencia(entradaNomeVenda) == false)
+                    {
+                        cout << "O produto informado não consta em nossos estoques" << endl;
+                        break;
+                    }
+                    // Apenas adicionar ao carrinho produtos existentes no estoque
+                    else
+                    {
+                        cout << "Informe o preço do produto como consta no menu: " << endl;
+                        cin >> entradaPrecoVenda;
+                        cout << "Qual a quantidade desejada: " << endl;
+                        cin >> entradaQuantVenda;
 
-                Pedidos.adicionarAoCarrinho(entradaNomeVenda, entradaQuantVenda, entradaPrecoVenda);
+                        // Verificar se há a quantidade desejada do produto para ser vendida
+                        if (vendedor.verificarQuantidade(entradaNomeVenda, entradaQuantVenda) == true)
+                        {
+                            // Apenas adicionar ao carrinho uma quantidade de produto que exista!
+                            carrinhoCompras.adicionarAoCarrinho(entradaNomeVenda, entradaQuantVenda, entradaPrecoVenda);
+                            // Já remove do estoque a quantidade do produto desejado
+                            vendedor.removerQuantidade(entradaNomeVenda, entradaQuantVenda);
+                            cout << "Produto adicionado com sucesso!" << endl;
+                            break;
+                        }
+                        else
+                        {
+                           cout << "Não possuimos a quantidade desejada!" << endl;
+                           break;
+                        }
+                    }
+                }
 
             case 5:
-                cout << "Seu carrinho de compras é: " << endl;
-                Pedidos.exibirPedidosNoCarrinho();
-                cout << endl << "Qual o pedido que você deseja excluir (informe o número anexado ao produto) : " << endl;
-                cin >> numeroRemover;
-                Pedidos.removerPedido(numeroRemover);
+                // Verificar se há produtos no carrinho
+                if (carrinhoCompras.quantidadeNoCarrinho() == 0)
+                {
+                    cout << "Seu carrinho está vazio, tente adicionar um pedido antes!" << endl;
+                    break;
+                }
+                // Apenas executar se houver algum pedido para ser removido
+                else
+                {
+                    // Exibir todos os pedidos do carrinho
+                    cout << "Seu carrinho de compras é: " << endl;
+                    carrinhoCompras.exibirPedidosNoCarrinho();
+                    // Remover o pedido com base na posição dele no vector
+                    cout << endl << "Qual o pedido que você deseja excluir (informe o número anexado ao produto) : " << endl;
+                    cin >> numeroRemover;
+                    carrinhoCompras.removerPedido(numeroRemover);
+                    break;
+                }
+
 
             case 6:
-                cout << "Seu carrinho de compras é :" << endl;
-                Pedidos.exibirPedidosNoCarrinho();
-                cout << "O valor total da venda foi de " << Pedidos.getValorTotal() << " Reais" << endl;
-                break;
-
-
+                // Verificar se há pedidos no carrinho
+                if (carrinhoCompras.quantidadeNoCarrinho() == 0)
+                {
+                    cout << "Seu carrinho está vazio, tente adicionar um pedido antes!" << endl;
+                    break;
+                }
+                // Apenas ir para o caixa se houver produtos no carrinho
+                else
+                {
+                    // Exibe todos os pedidos do carrinho
+                    cout << "Seu carrinho de compras é :" << endl;
+                    carrinhoCompras.exibirPedidosNoCarrinho();
+                    // Calcula o valor total da venda
+                    cout << "O valor total da venda foi de " << carrinhoCompras.getValorTotal() << " Reais" << endl;
+                    // Esvazia o carrinho após a venda
+                    carrinhoCompras.esvaziarCarrinho();
+                    cout << "Sua venda foi realizada com sucesso!" << endl;
+                    break;
+                }
         }
         system("pause");
 

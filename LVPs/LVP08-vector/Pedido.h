@@ -24,9 +24,11 @@ class Pedidos
     float valorTotal;
 public:
 
-    void adicionarAoCarrinho(string, int, float);
-    void exibirPedidosNoCarrinho();
-    void removerPedido(int);
-    float getValorTotal();
+    void adicionarAoCarrinho(string, int, float);           // Para adicionar novos itens no carrinho
+    void exibirPedidosNoCarrinho();                         // Para exibir todos os itens do carrinho
+    void removerPedido(int);                                // Para remover um pedido do carrinho com base no seu indice no vector
+    float getValorTotal();                                  // Para saber o valor total da Venda
+    int quantidadeNoCarrinho();                             // Saber se há algo no carrinho -> quantidade != 0
+    void esvaziarCarrinho();                                // Esvaziar um carrinho depois que a venda foi realizada
 };
 #endif // PEDIDO_H
