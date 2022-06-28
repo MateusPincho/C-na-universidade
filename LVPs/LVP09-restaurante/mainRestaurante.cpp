@@ -5,7 +5,7 @@
 //Disciplina: Tecnicas de Programacao
 //Turma: 02
 //Professor: Marcus Salerno
-//Unidade 07: LVP-09 - RESTAURANTE  
+//Unidade 07: LVP-09 - RESTAURANTE
 //IDE: VSCODE   */
 
 #include <iostream>
@@ -15,14 +15,30 @@
 
 using namespace std;
 
-#include "Restaurante.cpp"
-#include "Mesa.cpp"
 #include "Cliente.cpp"
+#include "Mesa.cpp"
+#include "Restaurante.cpp"
+
 
 int main(){
     setlocale(LC_ALL, "Portuguese");
     //Criando variáveis auxiliares
     int opcao;
+    Restaurante restaurante;
+    string entradaNomeRestaurante;
+
+    string entradaNomeCliente;
+    int entradaAcompanhantes;
+
+    int entradaRemoverCodigo;
+    int entradaCodigo;
+
+    // Perguntar o nome do restaurante do usuário
+    cout << "Estamos iniciando o sistema de gereciamento do seu restaurante!" << endl;
+    cout << "Como você deseja chamá-lo?" << endl;
+    cin.ignore();
+    getline(cin, entradaNomeRestaurante);
+    restaurante.setNome(entradaNomeRestaurante);
 
 
     // Criar interface de interacaoo com o usuario
@@ -31,7 +47,7 @@ int main(){
         system("cls");
 
         cout << "===========================================" << endl
-             << "=========== SISTEMA RESTAURANTE ===========" << endl
+             << "=========== SISTEMA RESTAURANTE  ==========" << endl
              << "===========================================" << endl << endl;
 
         // Perguntar qual a acao a ser realizada
@@ -58,39 +74,124 @@ int main(){
         switch(opcao)
         {
             case 1: // Adicionar cliente a fila de espera
-                // Perguntar os atributos do cliente
-                
 
-                // Adicionar ao fim da fila - push_back
-                
+                // Perguntar os atributos do cliente
+                cout << "Qual o nome do cliente?" << endl;
+                cin.ignore();
+                getline(cin, entradaNomeCliente);
+                cout << "Quantos acompanhantes ele possui?" << endl;
+                cin >> entradaAcompanhantes;
+
+                if (entradaAcompanhantes > 8)
+                {
+                    cout << "Infelizmente não aceitamos clientes com mais de 8 acompanhantes" << endl;
+                    break;
+                }
+                else
+                {
+                    // Adicionar ao fim da fila - push_back
+                    restaurante.adicionarClienteNaFilaEspera(entradaNomeCliente,entradaAcompanhantes);
+                    cout << endl << "Cliente adicionado com sucesso!" << endl;
+                    break;
+                }
+
+
+
             case 2: // Exibir fila de espera
-                // Percorrer toda a fila e exibir os clientes pertencentes
-                
+
+                //Verificar se a fila não esta vazia
+                if (restaurante.verificarFilaDeEspera())
+                {
+                    cout << "A fila de espera está vazia, adicione novos clientes para poder exibir a fila" << endl;
+                    break;
+                }
+                else
+                {
+                    // Percorrer toda a fila e exibir os clientes pertencentes
+                    restaurante.exibirFilaEspera();
+                    break;
+                }
 
             case 3: // Remover um cliente da fila de espera
-                // Exibir toda a fila e perguntar qual cliente deve ser removido - pelo código
 
-                // Remover o cliente desejado usando o seu código
-                
+                //Verificar se a fila não esta vazia
+                if (restaurante.verificarFilaDeEspera())
+                {
+                    cout << "A fila de espera está vazia, adicione novos clientes para poder exibir a fila" << endl;
+                    break;
+                }
+                else
+                {
+                    // Exibir toda a fila e perguntar qual cliente deve ser removido - pelo código
+                    cout << "Aqui estão todos os clientes na fila de espera!" << endl << endl;
+                    restaurante.exibirFilaEspera();
+                    cout << endl << "Qual deles você deseja remover? Informe a seguir o seu código" << endl;
+                    cin >> entradaRemoverCodigo;
+                    // Remover o cliente desejado usando o seu código
+                    restaurante.removerClienteDaFilaEspera(entradaRemoverCodigo);
+                    cout << endl << "Cliente removido com sucesso!" << endl;
+                    break;
+                }
+
 
             case 4: // Atender um cliente
-                // Pegar o primeiro cliente da fila de espera - begin()
-                
-                // Criar uma mesa para ele
 
-                // Remover este cliente da fila de espera
+                //Verificar se a fila não esta vazia
+                if (restaurante.verificarFilaDeEspera())
+                {
+                    cout << "A fila de espera está vazia, adicione novos clientes para atende-los" << endl;
+                    break;
+                }
+                else
+                {
+                    // Verificar se há mesas disponíveis
+                    if(restaurante.verificarMesas() == false)
+                    {
+                        cout << "Todas as mesas foram ocupadas, seu restaurante lotou!" << endl;
+                        break;
+                    }
+                    else
+                    {
+                        restaurante.atenderCliente();
+                        cout << "Cliente foi atendido e designado para uma mesa" << endl;
+                        break;
+                    }
+                }
 
-                // Adicionar este cliente a lista de clientes atendidos
+
+
+
 
             case 5: // Exibir dados de um cliente
-                // Perguntar o código do cliente 
 
-                // Mostrar o cliente que possui este código
-                
+                //Verificar se a fila não esta vazia
+                if (restaurante.verificarFilaDeEspera())
+                {
+                    cout << "Você não possui clientes para serem pesquisados" << endl;
+                    break;
+                }
+                else
+                {
+                    cout << "Qual o código do cliente que deseja pesquisar?" << endl;
+                    cin >> entradaCodigo;
+                    // verificar se este código existe - pesquisar em ambas as filas!!!
+                    break;
+                }
+
             case 6: // Gerar relatório de todos os clientes atendidos
-                // Exibir todos os clientes atendidos existentes na lista de atendidos
-                
-                
+
+                //Verificar se a fila não esta vazia
+                if (restaurante.verificarFilaAtendidos())
+                {
+                    cout << "Não foi possível gerar o relatório, pois você ainda não atendeu nenhum cliente!" << endl;
+                    break;
+                }
+                else
+                {
+                    restaurante.exibirRelatorioDeAtendidos();
+                    break;
+                }
+
         }
         system("pause");
 
