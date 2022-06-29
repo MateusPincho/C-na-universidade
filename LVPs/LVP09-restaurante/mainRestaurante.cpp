@@ -122,15 +122,26 @@ int main(){
                 }
                 else
                 {
+
                     // Exibir toda a fila e perguntar qual cliente deve ser removido - pelo código
                     cout << "Aqui estão todos os clientes na fila de espera!" << endl << endl;
                     restaurante.exibirFilaEspera();
                     cout << endl << "Qual deles você deseja remover? Informe a seguir o seu código" << endl;
                     cin >> entradaRemoverCodigo;
-                    // Remover o cliente desejado usando o seu código
-                    restaurante.removerClienteDaFilaEspera(entradaRemoverCodigo);
-                    cout << endl << "Cliente removido com sucesso!" << endl;
-                    break;
+                    // Verificar se o código informado existe
+                    if (restaurante.verificarCodigo(entradaRemoverCodigo) == true)
+                    {
+                         // Remover o cliente desejado usando o seu código
+                        restaurante.removerClienteDaFilaEspera(entradaRemoverCodigo);
+                        cout << endl << "Cliente removido com sucesso!" << endl;
+                        break;
+                    }
+                    else
+                    {
+                        cout << "O código informado não consta na lista de espera" << endl;
+                        break;
+                    }
+
                 }
 
 
@@ -152,20 +163,17 @@ int main(){
                     }
                     else
                     {
+                        // Atender clientes somente se houver disponibilidade
                         restaurante.atenderCliente();
                         cout << "Cliente foi atendido e designado para uma mesa" << endl;
                         break;
                     }
                 }
 
-
-
-
-
             case 5: // Exibir dados de um cliente
 
                 //Verificar se a fila não esta vazia
-                if (restaurante.verificarFilaDeEspera())
+                if (restaurante.verificarFilaDeEspera() && restaurante.verificarFilaAtendidos())
                 {
                     cout << "Você não possui clientes para serem pesquisados" << endl;
                     break;
@@ -174,8 +182,19 @@ int main(){
                 {
                     cout << "Qual o código do cliente que deseja pesquisar?" << endl;
                     cin >> entradaCodigo;
-                    // verificar se este código existe - pesquisar em ambas as filas!!!
-                    break;
+
+                    // verificar se este código existe - pesquisa feita em ambas as filas!!!
+                    if (restaurante.verificarCodigo(entradaCodigo) == true)
+                    {
+                        restaurante.pesquisarCliente(entradaCodigo);
+                        break;
+                    }
+                    else
+                    {
+                        cout << "Não foi encontrado nenhum código correspondente, verifique o código digitado" << endl;
+                        break;
+                    }
+
                 }
 
             case 6: // Gerar relatório de todos os clientes atendidos

@@ -5,7 +5,7 @@
 //Disciplina: Tecnicas de Programacao
 //Turma: 02
 //Professor: Marcus Salerno
-//Unidade 07: LVP-09 - RESTAURANTE  
+//Unidade 07: LVP-09 - RESTAURANTE
 //IDE: VSCODE   */
 
 #include "Cliente.h"
@@ -22,7 +22,7 @@ Cliente::Cliente()
 {
     // Vazio
 }
-// Metodo set para nome 
+// Metodo set para nome
 void Cliente::setNome(string nome)
 {
     this -> nome = nome;
@@ -40,6 +40,7 @@ void Cliente::setAcompanhates(int acompanhantes)
     this -> acompanhantes = acompanhantes;
 }
 
+// metodos get para a classe cliente
 string Cliente::getNome()
 {
     return nome;

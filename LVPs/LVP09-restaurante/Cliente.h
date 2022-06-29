@@ -5,11 +5,11 @@
 //Disciplina: Tecnicas de Programacao
 //Turma: 02
 //Professor: Marcus Salerno
-//Unidade 07: LVP-09 - RESTAURANTE  
+//Unidade 07: LVP-09 - RESTAURANTE
 //IDE: VSCODE   */
 
 #ifndef CLIENTE_H
-#define CLIENTE_H  
+#define CLIENTE_H
 
 class Cliente
 {
@@ -17,12 +17,15 @@ class Cliente
     int codigo;
     int acompanhantes;
 public:
+    // construtores
     Cliente(string, int, int);
     Cliente();
+
+    // metodos set
     void setNome(string);
     void setCodigo(int);
     void setAcompanhates(int);
-
+    //metodos get
     string getNome();
     int getCodigo();
     int getAcompanhantes();
