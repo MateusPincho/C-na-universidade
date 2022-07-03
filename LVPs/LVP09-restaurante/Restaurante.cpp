@@ -209,7 +209,7 @@ void Restaurante::pesquisarCliente(int codigo)
 void Restaurante::exibirRelatorioDeAtendidos()
 {
    // Percorrer toda a lista
-    for (int i = 0; i < clientesAtentidos.size(); i++)
+    for (int i = clientesAtentidos.size() - 1; i >= 0; i--)
     {
         // Exibir os atributos de todos na lista
         cout << "===========================================" << endl;
@@ -221,7 +221,7 @@ void Restaurante::exibirRelatorioDeAtendidos()
     cout << "Mesas ocupadas: " << endl << endl;
 
     // Percorrer toda a lista
-    for (int i = 0; i < clientesAtentidos.size(); i++)
+    for (int i = clientesAtentidos.size() - 1; i >= 0; i--)
     {
         // Exibir os atributos de todos na lista
         cout << "===========================================" << endl;
