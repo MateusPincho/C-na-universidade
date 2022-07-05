@@ -58,7 +58,7 @@ int main(){
              << "5 - Exibir dados de um cliente" << endl
              << "6 - Gerar relatorio de clientes atendidos" << endl
              << "7 - Encerrar" << endl;
-        cout << "Digite a opição desejada: " << endl;
+        cout << "Digite a opção desejada: " << endl;
         cin >> opcao;
 
         system("cls");

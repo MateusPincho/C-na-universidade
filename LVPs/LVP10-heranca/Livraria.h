@@ -20,10 +20,13 @@ class Livraria
 
 public:
     // metodos para acesso do sistema
+    Livraria();
     void setNomeUsuario(string);
     void setSenha(int);
     string getNomeUsuario();
     int getSenha();
+    void verificarUsuario(string);
+    void verificarSenha(int);
 
     // metodos do sistema
     void cadastrarLivroFiccao(Ficcao);
@@ -32,5 +35,11 @@ public:
     void exibirNaoFiccaoDisponivel();
     void venderFiccao(string);
     void venderNaoFiccao(string);
+    void ordenarPorNome();
+    void ordenarPorRanking();
+    bool verificarNomeFiccao(string);
+    bool verificarNomeNaoFiccao(string);
+    bool verificarExistenciaFiccao();
+    bool verificarExistenciaNaoFiccao();
 };
 #endif // LIVRARIA_H

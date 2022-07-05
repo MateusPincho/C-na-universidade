@@ -26,12 +26,12 @@ void Livro::setNome(string nome)
     this -> nome = nome;
 }
 
-void Livro::setAome(string nomeAutor)
+void Livro::setAutor(string nomeAutor)
 {
     this -> nomeAutor = nomeAutor;
 }
 
-void Livro::setISMB(long int ISBM)
+void Livro::setISBM(double ISBM)
 {
     this -> ISBM = ISBM;
 }
@@ -57,7 +57,7 @@ string Livro::getAutor() const
     return nomeAutor;
 }
 
-long int Livro::getISBM() const
+double Livro::getISBM() const
 {
     return ISBM;
 }

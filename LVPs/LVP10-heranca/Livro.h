@@ -15,7 +15,7 @@ class Livro
 protected:
     string nome;
     string nomeAutor;
-    long int ISBM;
+    double ISBM;
     int anoPublicao;
     float preco;
 
@@ -23,13 +23,13 @@ public:
     Livro();
     void setNome(string);
     void setAutor(string);
-    void setISBM(long int);
+    void setISBM(double);
     void setPublicacao(int);
-    void setPreco();
+    void setPreco(float);
 
     string getNome()const;
     string getAutor()const;
-    long int getISBM()const;
+    double getISBM()const;
     int getPublicacao()const;
     float getPreco()const;
 
