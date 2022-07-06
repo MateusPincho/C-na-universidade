@@ -21,12 +21,14 @@ protected:
 
 public:
     Livro();
+    // metodos set de atributo
     void setNome(string);
     void setAutor(string);
     void setISBM(double);
     void setPublicacao(int);
     void setPreco(float);
 
+    // metodos get de atributo
     string getNome()const;
     string getAutor()const;
     double getISBM()const;

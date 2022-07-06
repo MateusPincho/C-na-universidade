@@ -9,7 +9,7 @@
 //IDE: CodeBlocks   */
 
 #include "NaoFiccao.h"
-
+// construtor default
 NaoFiccao::NaoFiccao()
 {
     nome = "";
@@ -23,7 +23,7 @@ NaoFiccao::NaoFiccao()
     posicaoVendas = 0;
     classificacaoVendas = "";
 }
-
+// metodos set de atributo
 void NaoFiccao::setDepartamento(string departamento)
 {
     this -> departamento = departamento;
@@ -57,7 +57,7 @@ void NaoFiccao::setClassificacaoVendas()
 
 
 }
-
+// metodos get de atributo
 string NaoFiccao::getDepartamento() const
 {
     return departamento;

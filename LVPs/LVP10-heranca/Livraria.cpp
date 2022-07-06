@@ -38,20 +38,22 @@ int Livraria::getSenha()
 // metodos de verificacao
 bool Livraria::verificarNomeFiccao(string nome)
 {
+
     bool existencia;
 
     for (int i = 0; i < livrosFiccao.size(); i++)
     {
+        /
         if(livrosFiccao[i].getNome() == nome)
         {
-            existencia = true;                          // Caso encontre, retorna True
+            existencia = true;                          // Caso encontre, existencia é True
         }
 
     }
-    if (existencia != true)
+    if (existencia != true)                             // Caso não seja encotrado, existencia é false
         existencia = false;
 
-    if(existencia == true)
+    if(existencia == true)                              // Realizar o retorno da função verificaNome()
         return true;
     else
         return false;
@@ -65,11 +67,11 @@ bool Livraria::verificarNomeNaoFiccao(string nome)
     {
         if(livrosNaoFiccao[i].getNome() == nome)
         {
-            existencia = true;                          // Caso encontre, retorna True
+            existencia = true;                          // Caso encontre, existencia é True
             break;
         }
     }
-    if (existencia != true)
+    if (existencia != true)                             // Caso não seja encotrado, existencia é false
         existencia = false;
 
     if (existencia)                                     // Realizar o retorno da função verificaNome()
@@ -96,21 +98,22 @@ bool Livraria::verificarExistenciaNaoFiccao()
 
 }
 
+
 // metodos do sistema
 
 void Livraria::cadastrarLivroFiccao(Ficcao livro)
 {
-    livrosFiccao.push_back(livro);
+    livrosFiccao.push_back(livro);              // adicionar livro a lista
 }
 
 void Livraria::cadastrarLivroNaoFiccao(NaoFiccao livro)
 {
-    livrosNaoFiccao.push_back(livro);
+    livrosNaoFiccao.push_back(livro);          // adicionar livro a lista
 }
 
 void Livraria::exibirFiccaoDisponivel()
 {
-    for (int i = 0; i < livrosFiccao.size(); i++)
+    for (int i = 0; i < livrosFiccao.size(); i++)                           // percorre toda a lista e exibe os atributos do livro da posição i
     {
         cout << "===========================================" << endl;
         cout << "Nome: " << livrosFiccao[i].getNome() << endl;
@@ -126,7 +129,7 @@ void Livraria::exibirFiccaoDisponivel()
 
 void Livraria::exibirNaoFiccaoDisponivel()
 {
-    for (int i = 0; i < livrosNaoFiccao.size(); i++)
+    for (int i = 0; i < livrosNaoFiccao.size(); i++)                    // percorre toda a lista e exibe os atributos do livro da posição i
     {
         cout << "===========================================" << endl;
         cout << "Nome: " << livrosNaoFiccao[i].getNome() << endl;
@@ -141,4 +144,34 @@ void Livraria::exibirNaoFiccaoDisponivel()
         cout << "Classificação no Ranking: " << livrosNaoFiccao[i].getClassificacaoVendas() << endl;
      }
     cout << "===========================================" << endl;
+}
+
+// deve ser executado depois de verificar que não há livros repetidos
+void Livraria::venderFiccao(string nome)
+{
+    // percorrer toda a lista em busca do nome
+    for (int i =0; i < livrosFiccao.size(); i++)
+    {
+        // caso um livro tenha o mesmo nome informado
+        if(livrosFiccao[i].getNome() == nome)
+        {
+            // retirar este livro da lista pq ele foi vendido
+            livrosFiccao.erase(livrosFiccao.begin()+i);
+        }
+    }
+}
+
+// deve ser executado depois de verificar que não há livros repetidos
+void Livraria::venderNaoFiccao(string nome)
+{
+    // percorrer toda a lista em busca do nome
+    for (int i =0; i < livrosNaoFiccao.size(); i++)
+    {
+        // caso um livro tenha o mesmo nome informado
+        if(livrosNaoFiccao[i].getNome() == nome)
+        {
+            // retirar este livro da lista pq ele foi vendido
+            livrosNaoFiccao.erase(livrosNaoFiccao.begin()+i);
+        }
+    }
 }

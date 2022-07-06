@@ -13,6 +13,8 @@
 #include <clocale>
 #include <cstdlib>
 #include <vector>
+#include <algorithm>
+
 
 using namespace std;
 
@@ -45,7 +47,6 @@ int main()
 
     int opcao;
 
-/*
 
     //Acesso ao sistema - criação de login
     cout << "===========================================" << endl
@@ -75,7 +76,7 @@ int main()
 
     cout << "Informe seu nome de usuário: " << endl;
     cin >> entradaUsuario;
-
+    // enquanto não for informado o usuario corretamente, solicitar nova entrada
     while (entradaUsuario != sistemaLivraria.getNomeUsuario())
     {
         cout << "Nome de usuário informado não foi encontrado no nosso banco de dados, tente novamente: " << endl;
@@ -84,12 +85,13 @@ int main()
 
     cout << "Informe sua senha de login: " << endl;
     cin >> entradaSenha;
+    // enquanto não for informado a senha corretamente, solicitar nova entrada
     while (entradaSenha != sistemaLivraria.getSenha())
     {
         cout << "Senha informada incorreta, tente novamente: " << endl;
         cin >> entradaSenha;
     }
-*/
+
     // Login confirmado - Acesso ao sistema
     while(1)
     {
@@ -101,7 +103,7 @@ int main()
              << "===========================================" << endl << endl;
 
         cout << "Bem vindo, " << sistemaLivraria.getNomeUsuario() << "!" << endl << endl;
-
+        // menu de interação
         cout << "1 - Cadastrar Livro de Ficção" << endl
              << "2 - Cadastrar Livro de Não Ficção" << endl
              << "3 - Exibir livros de Ficção disponíveis" << endl
@@ -138,6 +140,7 @@ int main()
                 }
                 else
                 {
+                    // inserir informações sobre o livro
                     cout << "Informe o ISBM do livro: " << endl;
                     cin >> entradaISBM;
 
@@ -170,6 +173,7 @@ int main()
 
                     // cadastrar livro no sistema
                     sistemaLivraria.cadastrarLivroFiccao(entradaLivroFiccao);
+                    cout << "Livro cadastrado com sucesso!" << endl;
                     break;
                 }
 
@@ -187,6 +191,7 @@ int main()
                 }
                 else
                 {
+                    // inserir informações sobre o livro
                     cout << "Informe o ISBM do livro: " << endl;
                     cin >> entradaISBM;
 
@@ -225,13 +230,16 @@ int main()
                     entradaLivroNaoFiccao.setTipoMidia(entradaTipoMidia);
                     entradaLivroNaoFiccao.setPosicaoVendas(entradaPosicaoVendas);
                     entradaLivroNaoFiccao.setClassificacaoVendas();
+
                     // cadastrar livro no sistema
                     sistemaLivraria.cadastrarLivroNaoFiccao(entradaLivroNaoFiccao);
+                    cout << "Livro cadastrado com sucesso!" << endl;
                     break;
                 }
 
             // exibir livros de ficcao
             case 3:
+                // verificar se há livros para serem listados
                 if (sistemaLivraria.verificarExistenciaFiccao() == false)
                 {
                     cout << "Não há livros cadastrados!" << endl;
@@ -239,7 +247,6 @@ int main()
                 }
                 else
                 {
-                    // verificar se há livros para serem listados
                     cout << "Os livros em estoque são: " << endl;
                     sistemaLivraria.exibirFiccaoDisponivel();
                     break;
@@ -247,6 +254,7 @@ int main()
 
             // exibir livros de nao ficcao
             case 4:
+                // verificar se há livros para serem listados
                 if (sistemaLivraria.verificarExistenciaNaoFiccao() == false)
                 {
                     cout << "Não há livros cadastrados!" << endl;
@@ -254,11 +262,70 @@ int main()
                 }
                 else
                 {
-                    // verificar se há livros para serem listados
                     cout << "Os livros em estoque são: " << endl;
                     sistemaLivraria.exibirNaoFiccaoDisponivel();
                     break;
                 }
+
+            // vender livros de ficcao
+            case 5:
+                // verificar se há livros para serem vendidos
+                if (sistemaLivraria.verificarExistenciaFiccao() == false)
+                {
+                    cout << "Não há livros cadastrados!" << endl;
+                    break;
+                }
+                else
+                {
+                    cout << "Os livros disponíveis para venda são: " << endl;
+                    sistemaLivraria.exibirFiccaoDisponivel();
+                    cout << endl << "Qual o nome do livro que você deseja? " << endl;
+                    cin.ignore();
+                    getline(cin, entradaNomeLivro);
+                    // verificar se há livros com este nome
+                    if (sistemaLivraria.verificarNomeFiccao(entradaNomeLivro)==false)
+                    {
+                    cout << "O livro informado não consta no nosso sistema, verifique se digitou corretamente" << endl;
+                    break;
+                    }
+                    else
+                    {
+                        // passada as verificações, vender livro
+                        sistemaLivraria.venderFiccao(entradaNomeLivro);
+                        cout << "Livro vendido com sucesso!" << endl;
+                        break;
+                    }
+                }
+
+            case 6:
+                // verificar se há livros para serem vendidos
+                if (sistemaLivraria.verificarExistenciaNaoFiccao() == false)
+                {
+                    cout << "Não há livros cadastrados!" << endl;
+                    break;
+                }
+                else
+                {
+                    cout << "Os livros disponíveis para venda são: " << endl;
+                    sistemaLivraria.exibirNaoFiccaoDisponivel();
+                    cout << endl << "Qual o nome do livro que você deseja? " << endl;
+                    cin.ignore();
+                    getline(cin, entradaNomeLivro);
+                    // verificar se há livros com este nome
+                    if (sistemaLivraria.verificarNomeNaoFiccao(entradaNomeLivro)==false)
+                    {
+                    cout << "O livro informado não consta no nosso sistema, verifique se digitou corretamente" << endl;
+                    break;
+                    }
+                    else
+                    {
+                        // passada as verificações, vender livro
+                        sistemaLivraria.venderNaoFiccao(entradaNomeLivro);
+                        cout << "Livro vendido com sucesso!" << endl;
+                        break;
+                    }
+                }
+
 
 
 

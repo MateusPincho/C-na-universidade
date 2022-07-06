@@ -10,6 +10,7 @@
 
 #include "Ficcao.h"
 
+// construtor default
 Ficcao::Ficcao()
 {
     nome = "";
@@ -20,7 +21,7 @@ Ficcao::Ficcao()
     departamento = "";
     ambienteNarrativo = "";
 }
-
+// metodos set de atributo
 void Ficcao::setDepartamento(string departamento)
 {
     this -> departamento = departamento;
@@ -31,6 +32,7 @@ void Ficcao::setAmbienteNarrativo(string ambienteNarrativo)
     this -> ambienteNarrativo = ambienteNarrativo;
 }
 
+// metodos get de atributo
 string Ficcao::getDepartamento() const
 {
     return departamento;

@@ -10,16 +10,18 @@
 
 #ifndef FICCAO_H
 #define FICCAO_H
-
+// classe é derivada de livro
 class Ficcao : public Livro
 {
     string departamento;    // é o tipo (cientifica, romance, fantasia...)
     string ambienteNarrativo;
 public:
     Ficcao();
+    // metodos set de atributo
     void setDepartamento(string);
     void setAmbienteNarrativo(string);
 
+    // metodos get de atributo
     string getDepartamento()const;
     string getAmbienteNarrativo()const;
 };

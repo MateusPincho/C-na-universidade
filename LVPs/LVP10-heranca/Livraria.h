@@ -19,8 +19,8 @@ class Livraria
     int senhaUsuario;
 
 public:
-    // metodos para acesso do sistema
     Livraria();
+    // metodos para acesso do sistema
     void setNomeUsuario(string);
     void setSenha(int);
     string getNomeUsuario();
@@ -29,17 +29,17 @@ public:
     void verificarSenha(int);
 
     // metodos do sistema
-    void cadastrarLivroFiccao(Ficcao);
+    void cadastrarLivroFiccao(Ficcao);                          // adicionar livro a lista
     void cadastrarLivroNaoFiccao(NaoFiccao);
-    void exibirFiccaoDisponivel();
+    void exibirFiccaoDisponivel();                              // exibe todos os livros
     void exibirNaoFiccaoDisponivel();
-    void venderFiccao(string);
+    void venderFiccao(string);                                  // vende um livro
     void venderNaoFiccao(string);
-    void ordenarPorNome();
-    void ordenarPorRanking();
-    bool verificarNomeFiccao(string);
+    //bool ordenarPorNome();
+    //void ordenarPorRanking();
+    bool verificarNomeFiccao(string);                           // verifica se um livro já existe pelo seu nome
     bool verificarNomeNaoFiccao(string);
-    bool verificarExistenciaFiccao();
+    bool verificarExistenciaFiccao();                           // verifica se a lista está vazia
     bool verificarExistenciaNaoFiccao();
 };
 #endif // LIVRARIA_H

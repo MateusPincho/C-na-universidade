@@ -10,7 +10,7 @@
 
 #ifndef NAOFICCAO_H
 #define NAOFICCAO_H
-
+// classe é derivada de livro
 class NaoFiccao : public Livro
 {
     string departamento;
@@ -20,12 +20,13 @@ class NaoFiccao : public Livro
     string classificacaoVendas;
 public:
     NaoFiccao();
+    // metodos set de atributo
     void setDepartamento(string);
     void setAmbienteNarrativo(string);
     void setTipoMidia(string);
     void setPosicaoVendas(int);
     void setClassificacaoVendas();
-
+    // metodos get de atributo
     string getDepartamento()const;
     string getAmbienteNarrativo()const;
     string getTipoMidia()const;
