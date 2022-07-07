@@ -48,15 +48,15 @@ int main()
     int opcao;
 
 
-    //Acesso ao sistema - criação de login
+    //Acesso ao sistema - criaï¿½ï¿½o de login
     cout << "===========================================" << endl
          << "============= FAZER CADASTRO ==============" << endl
          << "===========================================" << endl << endl;
 
-    cout << "Vimos que este é seu primeiro acesso ao sistema, vamos criar um login para você" << endl;
-    cout << "Digite um nome de usuário: (ATENÇÃO - Seu nome de usuário não deve conter espaços)" << endl;
+    cout << "Vimos que este ï¿½ seu primeiro acesso ao sistema, vamos criar um login para vocï¿½" << endl;
+    cout << "Digite um nome de usuï¿½rio: (ATENï¿½ï¿½O - Seu nome de usuï¿½rio nï¿½o deve conter espaï¿½os)" << endl;
     cin >> entradaUsuario;
-    cout << "Crie uma senha númerica para login: " << endl;
+    cout << "Crie uma senha nï¿½merica para login: " << endl;
     cin >> entradaSenha;
 
     sistemaLivraria.setNomeUsuario(entradaUsuario);
@@ -74,18 +74,18 @@ int main()
          << "=============== FAZER LOGIN ===============" << endl
          << "===========================================" << endl << endl;
 
-    cout << "Informe seu nome de usuário: " << endl;
+    cout << "Informe seu nome de usuario: " << endl;
     cin >> entradaUsuario;
-    // enquanto não for informado o usuario corretamente, solicitar nova entrada
+    // enquanto nao for informado o usuario corretamente, solicitar nova entrada
     while (entradaUsuario != sistemaLivraria.getNomeUsuario())
     {
-        cout << "Nome de usuário informado não foi encontrado no nosso banco de dados, tente novamente: " << endl;
+        cout << "Nome de usuario informado nao foi encontrado no nosso banco de dados, tente novamente: " << endl;
         cin >> entradaUsuario;
     }
 
     cout << "Informe sua senha de login: " << endl;
     cin >> entradaSenha;
-    // enquanto não for informado a senha corretamente, solicitar nova entrada
+    // enquanto nao for informado a senha corretamente, solicitar nova entrada
     while (entradaSenha != sistemaLivraria.getSenha())
     {
         cout << "Senha informada incorreta, tente novamente: " << endl;
@@ -103,44 +103,44 @@ int main()
              << "===========================================" << endl << endl;
 
         cout << "Bem vindo, " << sistemaLivraria.getNomeUsuario() << "!" << endl << endl;
-        // menu de interação
-        cout << "1 - Cadastrar Livro de Ficção" << endl
-             << "2 - Cadastrar Livro de Não Ficção" << endl
-             << "3 - Exibir livros de Ficção disponíveis" << endl
-             << "4 - Exibir livros de Não Ficção disponíveis" << endl
-             << "5 - Vender livros de Ficção" << endl
-             << "6 - Vender livros de Não Ficção" << endl
+        // menu de interacaoo
+        cout << "1 - Cadastrar Livro de Ficaoo" << endl
+             << "2 - Cadastrar Livro de Nao Ficcao" << endl
+             << "3 - Exibir livros de Ficcao disponiveis" << endl
+             << "4 - Exibir livros de Nao Ficcao disponiveis" << endl
+             << "5 - Vender livros de Ficcao" << endl
+             << "6 - Vender livros de Nao Ficcao" << endl
              << "7 - Encerrar" << endl;
-        cout << "Digite a opção desejada: " << endl;
+        cout << "Digite a opcao desejada: " << endl;
         cin >> opcao;
 
         system("cls");
 
         if (opcao == 7)
         {
-            cout << "Encerrando sessão, obrigado!" << endl;
+            cout << "Encerrando sessao, obrigado!" << endl;
             break;
         }
 
         switch(opcao)
         {
 
-            // Cadastrar Livro de Ficção
+            // Cadastrar Livro de Ficï¿½ï¿½o
             case 1:
-                // Inserir informações sobre o livro:
+                // Inserir informaï¿½ï¿½es sobre o livro:
                 cout << "Informe o nome do livro: " << endl;
                 cin.ignore();
                 getline(cin, entradaNomeLivro);
 
-                // verificar se este livro não ja existe
+                // verificar se este livro nï¿½o ja existe
                 if (sistemaLivraria.verificarNomeFiccao(entradaNomeLivro)==true)
                 {
-                    cout << "Este livro já está cadastrado no sistema!" << endl;
+                    cout << "Este livro jï¿½ estï¿½ cadastrado no sistema!" << endl;
                     break;
                 }
                 else
                 {
-                    // inserir informações sobre o livro
+                    // inserir informaï¿½ï¿½es sobre o livro
                     cout << "Informe o ISBM do livro: " << endl;
                     cin >> entradaISBM;
 
@@ -148,14 +148,14 @@ int main()
                     cin.ignore();
                     getline(cin, entradaNomeAutor);
 
-                    cout << "Informe o ano de publicação do livro: " << endl;
+                    cout << "Informe o ano de publicaï¿½ï¿½o do livro: " << endl;
                     cin >> entradaAnoPublicacao;
 
                     cout << "Informe o departamento em que o se livro se situa: " << endl;
                     cin.ignore();
                     getline(cin, entradaDepartamento);
 
-                    cout << "Informe o preço do livro: " << endl;
+                    cout << "Informe o preï¿½o do livro: " << endl;
                     cin >> entradaPreco;
 
                     cout << "Informe o ambiente narrativo do livro: " << endl;
@@ -177,21 +177,21 @@ int main()
                     break;
                 }
 
-            // cadastrar livro não ficcao
+            // cadastrar livro nï¿½o ficcao
             case 2:
                 cout << "Informe o nome do livro: " << endl;
                 cin.ignore();
                 getline(cin, entradaNomeLivro);
 
-                // verificar se este livro já não existe
+                // verificar se este livro jï¿½ nï¿½o existe
                 if (sistemaLivraria.verificarNomeNaoFiccao(entradaNomeLivro)==true)
                 {
-                    cout << "Este livro já está cadastrado no sistema!" << endl;
+                    cout << "Este livro jï¿½ estï¿½ cadastrado no sistema!" << endl;
                     break;
                 }
                 else
                 {
-                    // inserir informações sobre o livro
+                    // inserir informaï¿½ï¿½es sobre o livro
                     cout << "Informe o ISBM do livro: " << endl;
                     cin >> entradaISBM;
 
@@ -199,24 +199,24 @@ int main()
                     cin.ignore();
                     getline(cin, entradaNomeAutor);
 
-                    cout << "Informe o ano de publicação do livro: " << endl;
+                    cout << "Informe o ano de publicaï¿½ï¿½o do livro: " << endl;
                     cin >> entradaAnoPublicacao;
 
-                    cout << "Informe o preço do livro: " << endl;
+                    cout << "Informe o preï¿½o do livro: " << endl;
                     cin >> entradaPreco;
 
                     cout << "Informe o departamento em que o se livro se situa: " << endl;
                     cin.ignore();
                     getline(cin, entradaDepartamento);
 
-                    cout << "Informe o tipo de mídia do livro: " << endl;
+                    cout << "Informe o tipo de mï¿½dia do livro: " << endl;
                     cin >> entradaTipoMidia;
 
                     cout << "Informe o ambiente narrativo do livro: " << endl;
                     cin.ignore();
                     getline(cin, entradaAmbienteNarrativo);
 
-                    cout << "Informe a posição no ranking de vendas: " << endl;
+                    cout << "Informe a posiï¿½ï¿½o no ranking de vendas: " << endl;
                     cin >> entradaPosicaoVendas;
 
                     // configurar livro a ser adicionado
@@ -239,58 +239,58 @@ int main()
 
             // exibir livros de ficcao
             case 3:
-                // verificar se há livros para serem listados
+                // verificar se hï¿½ livros para serem listados
                 if (sistemaLivraria.verificarExistenciaFiccao() == false)
                 {
-                    cout << "Não há livros cadastrados!" << endl;
+                    cout << "Nï¿½o hï¿½ livros cadastrados!" << endl;
                     break;
                 }
                 else
                 {
-                    cout << "Os livros em estoque são: " << endl;
+                    cout << "Os livros em estoque sï¿½o: " << endl;
                     sistemaLivraria.exibirFiccaoDisponivel();
                     break;
                 }
 
             // exibir livros de nao ficcao
             case 4:
-                // verificar se há livros para serem listados
+                // verificar se hï¿½ livros para serem listados
                 if (sistemaLivraria.verificarExistenciaNaoFiccao() == false)
                 {
-                    cout << "Não há livros cadastrados!" << endl;
+                    cout << "Nï¿½o hï¿½ livros cadastrados!" << endl;
                     break;
                 }
                 else
                 {
-                    cout << "Os livros em estoque são: " << endl;
+                    cout << "Os livros em estoque sï¿½o: " << endl;
                     sistemaLivraria.exibirNaoFiccaoDisponivel();
                     break;
                 }
 
             // vender livros de ficcao
             case 5:
-                // verificar se há livros para serem vendidos
+                // verificar se hï¿½ livros para serem vendidos
                 if (sistemaLivraria.verificarExistenciaFiccao() == false)
                 {
-                    cout << "Não há livros cadastrados!" << endl;
+                    cout << "Nï¿½o hï¿½ livros cadastrados!" << endl;
                     break;
                 }
                 else
                 {
-                    cout << "Os livros disponíveis para venda são: " << endl;
+                    cout << "Os livros disponï¿½veis para venda sï¿½o: " << endl;
                     sistemaLivraria.exibirFiccaoDisponivel();
-                    cout << endl << "Qual o nome do livro que você deseja? " << endl;
+                    cout << endl << "Qual o nome do livro que vocï¿½ deseja? " << endl;
                     cin.ignore();
                     getline(cin, entradaNomeLivro);
-                    // verificar se há livros com este nome
+                    // verificar se hï¿½ livros com este nome
                     if (sistemaLivraria.verificarNomeFiccao(entradaNomeLivro)==false)
                     {
-                    cout << "O livro informado não consta no nosso sistema, verifique se digitou corretamente" << endl;
+                    cout << "O livro informado nï¿½o consta no nosso sistema, verifique se digitou corretamente" << endl;
                     break;
                     }
                     else
                     {
-                        // passada as verificações, vender livro
+                        // passada as verificaï¿½ï¿½es, vender livro
                         sistemaLivraria.venderFiccao(entradaNomeLivro);
                         cout << "Livro vendido com sucesso!" << endl;
                         break;
@@ -298,28 +298,28 @@ int main()
                 }
 
             case 6:
-                // verificar se há livros para serem vendidos
+                // verificar se hï¿½ livros para serem vendidos
                 if (sistemaLivraria.verificarExistenciaNaoFiccao() == false)
                 {
-                    cout << "Não há livros cadastrados!" << endl;
+                    cout << "Nï¿½o hï¿½ livros cadastrados!" << endl;
                     break;
                 }
                 else
                 {
-                    cout << "Os livros disponíveis para venda são: " << endl;
+                    cout << "Os livros disponï¿½veis para venda sï¿½o: " << endl;
                     sistemaLivraria.exibirNaoFiccaoDisponivel();
-                    cout << endl << "Qual o nome do livro que você deseja? " << endl;
+                    cout << endl << "Qual o nome do livro que vocï¿½ deseja? " << endl;
                     cin.ignore();
                     getline(cin, entradaNomeLivro);
-                    // verificar se há livros com este nome
+                    // verificar se hï¿½ livros com este nome
                     if (sistemaLivraria.verificarNomeNaoFiccao(entradaNomeLivro)==false)
                     {
-                    cout << "O livro informado não consta no nosso sistema, verifique se digitou corretamente" << endl;
+                    cout << "O livro informado nï¿½o consta no nosso sistema, verifique se digitou corretamente" << endl;
                     break;
                     }
                     else
                     {
-                        // passada as verificações, vender livro
+                        // passada as verificaï¿½ï¿½es, vender livro
                         sistemaLivraria.venderNaoFiccao(entradaNomeLivro);
                         cout << "Livro vendido com sucesso!" << endl;
                         break;
