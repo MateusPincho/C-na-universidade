@@ -5,23 +5,32 @@
 //Disciplina: Tecnicas de Programacao
 //Turma: 02
 //Professor: Marcus Salerno
-//Unidade 07: LVP-10 - Livraria
+//Unidade 07: LVP-11 - Manipulação de arquivos
 //IDE: CodeBlocks   */
 
-#include "NaoFiccao.h"
-// construtor default
-NaoFiccao::NaoFiccao()
+#include "NaoFiccaoArquivo.h"
+
+// construtor da classe NaoFiccao
+NaoFiccao::NaoFiccao(string nome, string nomeAutor, double ISBM, int anoPublicacao, float preco, string departamento, string ambienteNarrativo, string tipoMidia, int posicaoVendas)
 {
-    nome = "";
-    nomeAutor = "";
-    ISBM = 0;
-    anoPublicao = 0;
-    preco = 0;
-    departamento = "";
-    ambienteNarrativo = "";
-    tipoMidia = "";
-    posicaoVendas = 0;
-    classificacaoVendas = "";
+    this -> nome = nome;
+    this -> nomeAutor = nomeAutor;
+    this -> ISBM = ISBM;
+    this -> anoPublicacao = anoPublicacao;
+    this -> preco = preco;
+    this -> departamento = departamento;
+    this -> ambienteNarrativo = ambienteNarrativo;
+    this -> tipoMidia = tipoMidia;
+    this -> posicaoVendas = posicaoVendas;
+
+    if (posicaoVendas < 11)
+        this -> classificacaoVendas = "Otima";
+
+    else if (posicaoVendas > 10 && posicaoVendas < 21)
+        this -> classificacaoVendas = "Muito boa";
+
+    else
+        this -> classificacaoVendas = "Sem classificacao";
 }
 
 // metodos set de atributo
@@ -58,6 +67,7 @@ void NaoFiccao::setClassificacaoVendas()
 
 
 }
+
 // metodos get de atributo
 string NaoFiccao::getDepartamento() const
 {
