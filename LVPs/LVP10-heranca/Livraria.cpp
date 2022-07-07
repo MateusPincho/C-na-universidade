@@ -43,7 +43,6 @@ bool Livraria::verificarNomeFiccao(string nome)
 
     for (int i = 0; i < livrosFiccao.size(); i++)
     {
-        /
         if(livrosFiccao[i].getNome() == nome)
         {
             existencia = true;                          // Caso encontre, existencia é True
@@ -113,6 +112,20 @@ void Livraria::cadastrarLivroNaoFiccao(NaoFiccao livro)
 
 void Livraria::exibirFiccaoDisponivel()
 {
+    // ordenar alfabeticamente pelo metodo seletion sort
+    for(int prev = 0; prev < livrosFiccao.size()-1; prev ++)
+    {
+        for(int next = prev + 1; next < livrosFiccao.size(); next ++)
+        {
+            Ficcao auxiliar = livrosFiccao[prev];
+            if (livrosFiccao[next].getNome() < livrosFiccao[prev].getNome())
+            {
+                livrosFiccao[prev] = livrosFiccao[next];
+                livrosFiccao[next] = auxiliar;
+            }
+        }
+    }
+
     for (int i = 0; i < livrosFiccao.size(); i++)                           // percorre toda a lista e exibe os atributos do livro da posição i
     {
         cout << "===========================================" << endl;
@@ -129,6 +142,20 @@ void Livraria::exibirFiccaoDisponivel()
 
 void Livraria::exibirNaoFiccaoDisponivel()
 {
+    // ordenar lista pelo metodo selection sort
+    for(int prev = 0; prev < livrosNaoFiccao.size()-1; prev ++)
+    {
+        for(int next = prev + 1; next < livrosNaoFiccao.size(); next ++)
+        {
+            NaoFiccao auxiliar = livrosNaoFiccao[prev];
+            if (livrosNaoFiccao[next].getPosicaoVendas() < livrosNaoFiccao[prev].getPosicaoVendas())
+            {
+                livrosNaoFiccao[prev] = livrosNaoFiccao[next];
+                livrosNaoFiccao[next] = auxiliar;
+            }
+        }
+    }
+
     for (int i = 0; i < livrosNaoFiccao.size(); i++)                    // percorre toda a lista e exibe os atributos do livro da posição i
     {
         cout << "===========================================" << endl;

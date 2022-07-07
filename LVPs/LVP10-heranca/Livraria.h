@@ -35,8 +35,6 @@ public:
     void exibirNaoFiccaoDisponivel();
     void venderFiccao(string);                                  // vende um livro
     void venderNaoFiccao(string);
-    //bool ordenarPorNome();
-    //void ordenarPorRanking();
     bool verificarNomeFiccao(string);                           // verifica se um livro já existe pelo seu nome
     bool verificarNomeNaoFiccao(string);
     bool verificarExistenciaFiccao();                           // verifica se a lista está vazia
