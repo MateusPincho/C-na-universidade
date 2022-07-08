@@ -25,12 +25,12 @@ public:
     ~Livraria();
 
     // metodos para acesso do sistema
-    
+
     // configuração nome de usuario
     void setNomeUsuario(string);
     // configuração senha
     void setSenha(int);
-    // retornar usuario 
+    // retornar usuario
     string getNomeUsuario();
     // retornar senha
     int getSenha();
@@ -39,23 +39,26 @@ public:
 
     // adicionar livro a lista
     void cadastrarLivroFiccao(Ficcao);
-    // adicionar livro a lista                          
+    // adicionar livro a lista
     void cadastrarLivroNaoFiccao(NaoFiccao);
     // exibe todos os livros
     void exibirFiccaoDisponivel();
-    // exibe todos os livros                              
+    // exibe todos os livros
     void exibirNaoFiccaoDisponivel();
     // vende um livro
     void venderFiccao(string);
-    // vende um livro                                  
+    // vende um livro
     void venderNaoFiccao(string);
     // verifica se um livro ja existe pelo seu nome
     bool verificarNomeFiccao(string);
-    // verifica se um livro ja existe pelo seu nome                           
+    // verifica se um livro ja existe pelo seu nome
     bool verificarNomeNaoFiccao(string);
     // verifica se a lista esta vazia
     bool verificarExistenciaFiccao();
-    // verifica se a lista esta vazia                           
+    // verifica se a lista esta vazia
     bool verificarExistenciaNaoFiccao();
+
+    void lerArquivoFiccao();
+    void salvarArquivoFiccao();
 };
 #endif // LIVRARIA_H

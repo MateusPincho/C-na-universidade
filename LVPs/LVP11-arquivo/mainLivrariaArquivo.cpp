@@ -27,7 +27,7 @@ int main()
 {
     setlocale(LC_ALL,"Portuguese");
 
-    // criando variaveis auxiliares 
+    // criando variaveis auxiliares
     Livraria sistemaLivraria;
 
     string entradaUsuario;
@@ -45,7 +45,7 @@ int main()
 
     int opcao;
 
-    //Acesso ao sistema - criacao de login
+    /*//Acesso ao sistema - criacao de login
     cout << "===========================================" << endl
          << "============= FAZER CADASTRO ==============" << endl
          << "===========================================" << endl << endl;
@@ -88,7 +88,7 @@ int main()
         cout << "Senha informada incorreta, tente novamente: " << endl;
         cin >> entradaSenha;
     }
-
+*/
     // Login confirmado - Acesso ao sistema
     while(1)
     {
