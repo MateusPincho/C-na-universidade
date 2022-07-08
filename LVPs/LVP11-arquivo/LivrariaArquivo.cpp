@@ -13,18 +13,18 @@
 // construtor que ira dar o input no arquivo de dados e armanezar na lista os livros que já foram cadastrados
 Livraria::Livraria()
 {
-    ofstream arquivo("cadastroLivrosFiccao.txt", std::ios::app);
-    arquivo.close();
+    // variaveis que irão armezenar temporariamente os valores do arquivo
+    string nome, nomeAutor, departamento, ambienteNarrativo, tipoMidia, classificacaoVendas;
+    double ISBM;
+    int anoPublicacao, posicaoVendas;
+    float preco;
 
+    // PARA LIVROS DE FICCAO
+    // arquivo configurado para leitura dos dados
     ifstream arquivoLivrosFiccao;
     arquivoLivrosFiccao.open("cadastroLivrosFiccao.txt");
 
-
-    string nome, nomeAutor, departamento, ambienteNarrativo;
-    double ISBM;
-    int anoPublicacao;
-    float preco;
-
+    // salvando no vector os livros de ficcao ja criados
     if (arquivoLivrosFiccao.is_open()) // se o arquivo abrir
     {
         while (!arquivoLivrosFiccao.eof()) // enquanto não for o fim do arquivo
@@ -47,16 +47,54 @@ Livraria::Livraria()
             Ficcao livroFAuxiliar(nome,nomeAutor,ISBM,anoPublicacao,preco,departamento,ambienteNarrativo);
             livrosFiccao.push_back(livroFAuxiliar);
         }
-        //arquivoLivrosFiccao.close();
     }
     else
     {
         cout << "Não foi possível abrir o arquivo" << endl;
     }
+
+    // PARA LIVROS DE NAO FICCAO
+    // arquivo configurado para leitura dos dados
+    ifstream arquivoLivrosNaoFiccao;
+    arquivoLivrosNaoFiccao.open("cadastroNaoFiccao.txt");
+
+    // salvando no vector os livros de ficcao ja criados
+    if(arquivoLivrosNaoFiccao.is_open()) // se o arquivo abrir
+    {
+        while(!arquivoLivrosNaoFiccao.eof()) // enquanto não for fim de arquivo
+        {
+            getline(arquivoLivrosNaoFiccao,nome);
+
+            if(arquivoLivrosNaoFiccao.eof())
+                break;
+
+            getline(arquivoLivrosNaoFiccao,nomeAutor);
+            arquivoLivrosNaoFiccao >> ISBM;
+            arquivoLivrosNaoFiccao >> anoPublicacao;
+            arquivoLivrosNaoFiccao >> preco;
+            arquivoLivrosNaoFiccao >> posicaoVendas;
+
+            arquivoLivrosNaoFiccao.ignore();
+
+            getline(arquivoLivrosNaoFiccao,departamento);
+            getline(arquivoLivrosNaoFiccao,ambienteNarrativo);
+            getline(arquivoLivrosNaoFiccao,tipoMidia);
+
+            NaoFiccao livroNFAuxiliar(nome,nomeAutor,ISBM,anoPublicacao,preco,departamento,ambienteNarrativo,tipoMidia,posicaoVendas);
+            livrosNaoFiccao.push_back(livroNFAuxiliar);
+        }
+    }
+    else
+    {
+        cout << "Nao foi possível abrir o arquivo" << endl;
+    }
+
 }
 //destrutor que irá salvar todas as alterações na lista de livros no arquivo txt
 Livraria::~Livraria()
 {
+    // PARA LIVROS DE FICCAO
+    // arquivo configurado para escrita de dados
     ofstream arquivoLivrosFiccao;
     arquivoLivrosFiccao.open("cadastroLivrosFiccao.txt", std::ios::trunc);
 
@@ -79,71 +117,27 @@ Livraria::~Livraria()
         cout << "Não foi possível gravar o arquivo" << endl;
     }
 
-}
+    // PARA LIVROS DE NAO FICCAO
+    // arquivo configurado para leitura de dados
+    ofstream arquivoLivrosNaoFiccao;
+    arquivoLivrosNaoFiccao.open("cadastroNaoFiccao.txt", std::ios::trunc);
 
-void Livraria::lerArquivoFiccao()
-{
-    livrosFiccao.clear();
-
-    ifstream arquivoLivrosFiccao;
-    arquivoLivrosFiccao.open("cadastroLivrosFiccao.txt");
-
-
-    string nome, nomeAutor, departamento, ambienteNarrativo;
-    double ISBM;
-    int anoPublicacao;
-    float preco;
-
-    if (arquivoLivrosFiccao.is_open()) // se o arquivo abrir
+    if(arquivoLivrosNaoFiccao.is_open())
     {
-        while (!arquivoLivrosFiccao.eof()) // enquanto não for o fim do arquivo
+        for (int i = 0; i < livrosNaoFiccao.size(); i++)
         {
-            getline(arquivoLivrosFiccao,nome);
+            arquivoLivrosNaoFiccao << livrosNaoFiccao[i].getNome() << endl;
+            arquivoLivrosNaoFiccao << livrosNaoFiccao[i].getAutor() << endl;
+            arquivoLivrosNaoFiccao << livrosNaoFiccao[i].getISBM() << endl;
+            arquivoLivrosNaoFiccao << livrosNaoFiccao[i].getPublicacao() << endl;
+            arquivoLivrosNaoFiccao << livrosNaoFiccao[i].getPreco() << endl;
+            arquivoLivrosNaoFiccao << livrosNaoFiccao[i].getPosicaoVendas() << endl;
+            arquivoLivrosNaoFiccao << livrosNaoFiccao[i].getDepartamento() << endl;
+            arquivoLivrosNaoFiccao << livrosNaoFiccao[i].getAmbienteNarrativo() <<endl;
+            arquivoLivrosNaoFiccao << livrosNaoFiccao[i].getTipoMidia() << endl;
 
-            if(arquivoLivrosFiccao.eof())
-                break;
-
-            getline(arquivoLivrosFiccao,nomeAutor);
-            arquivoLivrosFiccao >> ISBM;
-            arquivoLivrosFiccao >> anoPublicacao;
-            arquivoLivrosFiccao >> preco;
-            getline(arquivoLivrosFiccao,departamento);
-            getline(arquivoLivrosFiccao,ambienteNarrativo);
-
-            Ficcao livroFAuxiliar(nome,nomeAutor,ISBM,anoPublicacao,preco,departamento,ambienteNarrativo);
-            livrosFiccao.push_back(livroFAuxiliar);
-
-            arquivoLivrosFiccao.ignore();
         }
-        arquivoLivrosFiccao.close();
-    }
-    else
-    {
-        cout << "Não foi possível abrir o arquivo" << endl;
-    }
-}
-
-void Livraria::salvarArquivoFiccao()
-{
-    ofstream Arquivo;
-    Arquivo.open("cadastroLivrosFiccao.txt", std::ofstream::trunc);
-    Arquivo.close();
-
-    ofstream arquivoLivrosFiccao;
-    arquivoLivrosFiccao.open("cadastroLivrosFiccao.txt", ios_base::trunc);
-
-    if(arquivoLivrosFiccao.is_open())
-    {
-        for (int i = 0; i<livrosFiccao.size(); i++)
-        {
-            arquivoLivrosFiccao << livrosFiccao[i].getNome() << endl;
-            arquivoLivrosFiccao << livrosFiccao[i].getAutor() << endl;
-            arquivoLivrosFiccao << livrosFiccao[i].getISBM() << endl;
-            arquivoLivrosFiccao << livrosFiccao[i].getPublicacao() << endl;
-            arquivoLivrosFiccao << livrosFiccao[i].getPreco() << endl;
-            arquivoLivrosFiccao << livrosFiccao[i].getDepartamento() << endl;
-            arquivoLivrosFiccao << livrosFiccao[i].getAmbienteNarrativo() << endl;
-        }
+        arquivoLivrosNaoFiccao.close();
     }
     else
     {
@@ -245,7 +239,7 @@ void Livraria::cadastrarLivroFiccao(Ficcao livro)
 {
     //lerArquivoFiccao();
     livrosFiccao.push_back(livro);              // adicionar livro a lista
-    salvarArquivoFiccao();
+    //salvarArquivoFiccao();
 }
 
 // metodo para cadastro de livros de nao ficcao

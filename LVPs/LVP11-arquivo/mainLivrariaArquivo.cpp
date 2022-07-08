@@ -45,7 +45,9 @@ int main()
 
     int opcao;
 
-    /*//Acesso ao sistema - criacao de login
+    system("cls");
+
+    //Acesso ao sistema - criacao de login
     cout << "===========================================" << endl
          << "============= FAZER CADASTRO ==============" << endl
          << "===========================================" << endl << endl;
@@ -88,7 +90,7 @@ int main()
         cout << "Senha informada incorreta, tente novamente: " << endl;
         cin >> entradaSenha;
     }
-*/
+
     // Login confirmado - Acesso ao sistema
     while(1)
     {
@@ -308,12 +310,6 @@ int main()
                         break;
                     }
                 }
-
-
-
-
-
-
         }
         system("pause");
     }
