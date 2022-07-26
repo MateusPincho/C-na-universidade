@@ -58,7 +58,5 @@ public:
     // verifica se a lista esta vazia
     bool verificarExistenciaNaoFiccao();
 
-    void lerArquivoFiccao();
-    void salvarArquivoFiccao();
 };
 #endif // LIVRARIA_H
